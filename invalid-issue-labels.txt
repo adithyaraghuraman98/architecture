@@ -1,0 +1,8 @@
+enhancement
+feature
+wontfix
+feature request
+invalid
+duplicate
+non-issue
+wrong repo
