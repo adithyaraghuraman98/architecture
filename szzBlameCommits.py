@@ -29,11 +29,12 @@ class Blamer(BaseGitHubThreadedExtractor):
         with open(valid_labels_file_path) as f:
             self.valid_labels = f.read().splitlines()
 
-    def get_blamed_commits(self, slug, db_repo_id, repos_folder='./repos'):
+    def get_blamed_commits(self, db_repo_id, slug, repos_folder='./repos'):
+        
         session = SessionWrapper.new()
         basic_classifier = BasicFileTypeClassifier()
-
         folder_path = os.path.join(repos_folder, slugToFolderName(slug))
+        
         try:
             git_repo = pygit2.Repository(folder_path)
             last = git_repo[git_repo.head.target]
@@ -53,6 +54,7 @@ class Blamer(BaseGitHubThreadedExtractor):
         repo, pid, gh = self.get_gh_repo(slug)
 
         blamed_commits = {}
+
         # Fetch all commits as an iterator, and iterate it
         for c in git_repo.walk(last.id, pygit2.GIT_SORT_TIME):
             commit = CommitWrapper(c)
@@ -293,7 +295,7 @@ def main():
 
     for r in repos:
         b = Blamer(tokens, tokens_queue, tokens_map)
-        b.get_blamed_commits(r.slug, r.repo_id)
+        b.get_blamed_commits(r.repo_id, r.slug)
 
 
 if __name__ == '__main__':

@@ -152,3 +152,99 @@ class Blame(Base):
         self.type = type
         self.blamed_sha = blamed_sha
         self.num_blamed_lines = num_blamed_lines
+
+class Bug_Commit_Timeline(Base):
+    __tablename__ = 'bug_commit_timeline'
+    
+    id = Column(BigInteger, primary_key=True)
+    repo_id = Column(BigInteger, index=True, nullable=False)  # ForeignKey("repos.id")
+    slug = Column(String(255), index=True)
+    total = Column(Integer)
+    Q1_2012 = Column(Integer)
+    Q2_2012 = Column(Integer) 
+    Q3_2012 = Column(Integer)
+    Q4_2012 = Column(Integer)
+    Q1_2013 = Column(Integer)
+    Q2_2013 = Column(Integer)
+    Q3_2013 = Column(Integer)
+    Q4_2013 = Column(Integer)
+    Q1_2014 = Column(Integer)
+    Q2_2014 = Column(Integer)
+    Q3_2014 = Column(Integer)
+    Q4_2014 = Column(Integer)
+    Q1_2015 = Column(Integer)
+    Q2_2015 = Column(Integer)
+    Q3_2015 = Column(Integer)
+    Q4_2015 = Column(Integer)
+    Q1_2016 = Column(Integer)
+    Q2_2016 = Column(Integer)
+    Q3_2016 = Column(Integer)
+    Q4_2016 = Column(Integer)
+    Q1_2017 = Column(Integer)
+    Q2_2017 = Column(Integer)
+    Q3_2017 = Column(Integer)
+    Q4_2017 = Column(Integer)
+    Q1_2018 = Column(Integer)
+    Q2_2018 = Column(Integer)
+
+
+    def __init__(self,
+                repo_id,
+                slug,
+                total,
+                Q1_2012,
+                Q2_2012,
+                Q3_2012,
+                Q4_2012,
+                Q1_2013,
+                Q2_2013,
+                Q3_2013,
+                Q4_2013,
+                Q1_2014,
+                Q2_2014,
+                Q3_2014,
+                Q4_2014,
+                Q1_2015,
+                Q2_2015,
+                Q3_2015,
+                Q4_2015,
+                Q1_2016,
+                Q2_2016,
+                Q3_2016,
+                Q4_2016,
+                Q1_2017,
+                Q2_2017,
+                Q3_2017,
+                Q4_2017,
+                Q1_2018,
+                Q2_2018) :
+        self.repo_id = repo_id
+        self.slug = slug
+        self.total = total
+        self.Q1_2012 = Q1_2012
+        self.Q2_2012 = Q2_2012
+        self.Q3_2012 = Q3_2012
+        self.Q4_2012 = Q4_2012
+        self.Q1_2013 = Q1_2013
+        self.Q2_2013 = Q2_2013
+        self.Q3_2013 = Q3_2013
+        self.Q4_2013 = Q4_2013
+        self.Q1_2014 = Q1_2014
+        self.Q2_2014 = Q2_2014
+        self.Q3_2014 = Q3_2014
+        self.Q4_2014 = Q4_2014
+        self.Q1_2015 = Q1_2015
+        self.Q2_2015 = Q2_2015
+        self.Q3_2015 = Q3_2015
+        self.Q4_2015 = Q4_2015
+        self.Q1_2016 = Q1_2016
+        self.Q2_2016 = Q2_2016
+        self.Q3_2016 = Q3_2016
+        self.Q4_2016 = Q4_2016
+        self.Q1_2017 = Q1_2017
+        self.Q2_2017 = Q2_2017
+        self.Q3_2017 = Q3_2017
+        self.Q4_2017 = Q4_2017
+        self.Q1_2018 = Q1_2018
+        self.Q2_2018 = Q2_2018
+

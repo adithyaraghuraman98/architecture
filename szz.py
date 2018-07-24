@@ -78,6 +78,7 @@ class SZZ:
                      IssueLink.delta_closed <= 0)).distinct().all()
             logger.info("%s retrieved" % len(repos))
             repos = [(repo_id, slug, repos_folder) for (repo_id, slug) in repos]
+            blamedCommit.BlamedCommitAnalyzer.run_analysis(repos[0])
             with futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
                 executor.map(blamedCommit.BlamedCommitAnalyzer.run_analysis, sorted(repos))
 
