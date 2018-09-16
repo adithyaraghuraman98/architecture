@@ -9,11 +9,17 @@ from queue import Queue
 
 logger = logging.getLogger('SZZ')
 
+projects = []
+with open ('/data2/adithya/szz/control-group.txt','r') as f:
+    for line in f.readlines():
+        projects.append(line.strip())
 
 class BlamedCommitAnalyzer:
     @staticmethod
     def run_analysis(id_slug_folder):
         repo_id, slug, repos_folder = id_slug_folder
+        if(slug not in projects):
+            return
         logger.info(msg='Starting analysis of blamed commits from repo {0}.'.format(slug))
         start = clock()
         tokens = Tokens()

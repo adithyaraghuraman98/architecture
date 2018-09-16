@@ -113,7 +113,6 @@ class Blamer(BaseGitHubThreadedExtractor):
 
                 line_labels = {}
                 blame_counter = {}
-
                 for hunk in patch.hunks:
                     if hunk.old_lines:
                         for hl in hunk.lines:

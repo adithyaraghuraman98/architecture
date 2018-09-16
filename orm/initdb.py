@@ -10,6 +10,8 @@ import yaml
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.orm import sessionmaker
+import configparser
+
 import os
 from .base import Base
 
@@ -55,3 +57,13 @@ class SessionWrapper:
     def __init_db(engine):
         metadata = Base.metadata
         metadata.create_all(engine)
+
+class SessionWrapper_GHT:
+    def new():
+        settings = configparser.ConfigParser()
+        settings.read(os.path.join(os.getcwd(), "config.ini"))
+        user_name = settings.get('GHT','User')
+        password = settings.get('GHT','Pass')
+        engine_ght = create_engine('mysql+pymysql://%s:%s@localhost/ghtorrent-2018-03?charset=utf8mb4'%(user_name, password))
+        Session_GHT = sessionmaker(engine_ght)
+        return Session_GHT

@@ -9,7 +9,7 @@ from szzUtils import folderNameToSlug
 
 logger = logging.getLogger('SZZ')
 projects = []
-with open ('/data2/adithya/szz/project-list.txt','r') as f:
+with open ('/data2/adithya/szz/control-group.txt','r') as f:
     for line in f.readlines():
         projects.append(line.strip())
 
@@ -22,6 +22,7 @@ class CommitAnalyzer:
         folder_name = folder_name[1:]
         slug = folderNameToSlug(folder_name)
         folder_path = os.path.join(repos_folder, folder_name)
+
         if(slug not in projects):
             return
         

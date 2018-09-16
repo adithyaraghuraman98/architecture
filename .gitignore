@@ -155,6 +155,7 @@ ENV?/
 repos/
 github-api-tokens*.txt
 config.yml
+config.ini
 temp.ids
 temp.projects
 tmp/

@@ -65,6 +65,7 @@ CalZoneVUB/Documents
 camsci/meteor-pi
 CDLUC3/dash
 ceccr/chembench
+CGAL/cgal
 cgstudiomap/cgstudiomap
 CharlesMcquade/cs373-idb
 chenbachar/HelpApp
@@ -220,6 +221,7 @@ gccxml/pygccxml
 gdisf/teaching-materials
 genworks/gendl
 gerritjvv/glue
+GestUAB/GestUAB
 globicon/mobile-client
 glytoucan/glytoucan.github.io
 gocd/gocd
@@ -307,6 +309,7 @@ libMesh/libmesh
 linkedin/gobblin
 linz/QGIS-AIMS-Plugin
 lmu-bioinformatics/xmlpipedb
+lo-co/exscalabar_server
 longkerdandy/mithqtt
 lostechies/wordpress
 lsegal/yard
@@ -365,6 +368,7 @@ opencimi/AML
 opengds/OpenGDS
 opengeospatial/ets-wms11
 opptor/rss-webapp
+orocrm/platform
 osate/osate2-core
 osm2vectortiles/osm2vectortiles-thesis
 ozone-development/ozp-backend
@@ -427,6 +431,7 @@ RobotML/Athena-VLE
 RobotML/RobotML-SDK
 robotology/codyco-modules
 roschaefer/Timetabling
+rose-compiler/rose
 RostarSynergistics/ShinyExpenseTracker
 RyFry/leagueofdowning
 Sabrout/Kenllen
@@ -553,6 +558,7 @@ websauna/websauna
 WICG/paymentrequest
 wilkinsmt1/CPTS-323-SAD-Project
 winjunetech/GDSConHandAndroid
+WiReSEP/WireLib2012
 wouwouwou/project_module_3
 wwivbbs/wwiv
 xamarin/monodroid-samples
@@ -564,8 +570,8 @@ yancyn/hi-tea
 yancyn/ParcelTrack
 yandex/pandora
 yousraHazem/topsoft-13
+yuri-vashchenko/CircleFilter
 zactyy/cpts323
 zian92/Glurak
 zlepper/WhoNeedsHelp
 ZooTypers/ZooTypers
-GestUAB/GestUAB

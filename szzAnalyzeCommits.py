@@ -37,8 +37,8 @@ def get_commits(slug, repos_folder):
             # the reason why we return here is to skip analyzing
             # again a repo in case of crashing exception that forces
             # the script to be run again
-            logger.info(msg="Skipping analysis of commits from %s, already in the db" % slug)
-            return slug
+            #logger.info(msg="Skipping analysis of commits from %s, already in the db" % slug)
+            #return slug
         except exc.NoResultFound:
             db_repo = Repo(slug,
                            min_commit,
@@ -91,8 +91,8 @@ def get_commits(slug, repos_folder):
             message = commit.getMessage().strip()
 
             try:
-                db_commit = session.query(Commit).filter_by(sha=sha).one()
-                continue  # if already present, stop and go on analyzing the next one
+                db_commit = session.query(Commit).filter_by(repo_id = db_repo.id,sha=sha).one()
+                #continue  # if already present, stop and go on analyzing the next one
             except exc.NoResultFound:
                 diff = commit.getDiff(git_repo)
                 loc_added = diff.stats.insertions
@@ -102,25 +102,48 @@ def get_commits(slug, repos_folder):
                 # get info about changes to src files in the new  commit
                 all_files, src_files, num_src_files_touched, src_loc_added, src_loc_deleted = \
                     CommitWrapper.get_src_changes(basic_classifier, diff)
-
-                db_commit = Commit(db_repo.id,
-                                   sha,
-                                   authored_datetime,
-                                   author_id,
-                                   committer_id,
-                                   message,
-                                   num_parents,
-                                   loc_added,
-                                   loc_deleted,
-                                   num_files_touched,
-                                   all_files,
-                                   src_loc_added,
-                                   src_loc_deleted,
-                                   num_src_files_touched,
-                                   src_files)
-                session.add(db_commit)
+                try:
+                    db_commit = Commit(db_repo.id,
+                                       sha,
+                                       authored_datetime,
+                                       author_id,
+                                       committer_id,
+                                       message,
+                                       num_parents,
+                                       loc_added,
+                                       loc_deleted,
+                                       num_files_touched,
+                                       all_files,
+                                       src_loc_added,
+                                       src_loc_deleted,
+                                       num_src_files_touched,
+                                       src_files)
+                    session.add(db_commit)
                 # required to flush the pending data before adding to the CommitFiles table below
-                session.commit()
+                    session.commit()
+                
+                except:
+                    all_files = ""
+                    src_files = ""
+                    message = ""
+                    db_commit = Commit(db_repo.id,
+                                       sha,
+                                       authored_datetime,
+                                       author_id,
+                                       committer_id,
+                                       message,
+                                       num_parents,
+                                       loc_added,
+                                       loc_deleted,
+                                       num_files_touched,
+                                       all_files,
+                                       src_loc_added,
+                                       src_loc_deleted,
+                                       num_src_files_touched,
+                                       src_files)
+                    session.add(db_commit)
+                # required to flush the pending data before adding to the CommitFiles table below
+                    session.commit()
 
                 # parse changed files per diff
                 for patch in diff:
@@ -169,6 +192,7 @@ def get_commits(slug, repos_folder):
                                 db_link = session.query(IssueLink).filter(and_(IssueLink.repo_id == db_repo.id,
                                                                                IssueLink.sha == sha,
                                                                                IssueLink.issue_number == issue_id)).one()
+                                print(db_repo.id, "Touch")
                                 continue
                             except exc.NoResultFound:
                                 delta_open = (
