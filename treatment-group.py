@@ -13,8 +13,6 @@ from sqlalchemy import and_, func
 from sqlalchemy.orm import sessionmaker
 import subprocess
 from unidecode import unidecode
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 from orm.initdb import SessionWrapper
 from orm import GhIssue
@@ -28,9 +26,8 @@ counter  = 0
 index = 0
         
 
-engine_ght = create_engine('mysql+pymysql://adithya:zY1PzfI1uS9cz8Q@localhost/ghtorrent-2018-03?charset=utf8mb4')
-Session_GHT = sessionmaker(engine_ght)
-session_GHT = Session_GHT()
+session_GHT = SessionWrapper_GHT.new()
+
 
 count = 0
 with open('treatment-group.txt','w') as f:
