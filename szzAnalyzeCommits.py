@@ -37,7 +37,7 @@ def get_commits(slug, repos_folder):
             # the reason why we return here is to skip analyzing
             # again a repo in case of crashing exception that forces
             # the script to be run again
-            #logger.info(msg="Skipping analysis of commits from %s, already in the db" % slug)
+            logger.info(msg="Skipping analysis of commits from %s, already in the db" % slug)
             #return slug
         except exc.NoResultFound:
             db_repo = Repo(slug,
@@ -92,7 +92,7 @@ def get_commits(slug, repos_folder):
 
             try:
                 db_commit = session.query(Commit).filter_by(repo_id = db_repo.id,sha=sha).one()
-                #continue  # if already present, stop and go on analyzing the next one
+                continue  # if already present, stop and go on analyzing the next one
             except exc.NoResultFound:
                 diff = commit.getDiff(git_repo)
                 loc_added = diff.stats.insertions

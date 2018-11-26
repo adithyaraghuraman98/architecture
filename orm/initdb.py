@@ -66,4 +66,4 @@ class SessionWrapper_GHT:
         password = settings.get('GHT','Pass')
         engine_ght = create_engine('mysql+pymysql://%s:%s@localhost/ghtorrent-2018-03?charset=utf8mb4'%(user_name, password))
         Session_GHT = sessionmaker(engine_ght)
-        return Session_GHT
+        return Session_GHT()

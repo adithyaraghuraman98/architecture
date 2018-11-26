@@ -29,12 +29,11 @@ class Blamer(BaseGitHubThreadedExtractor):
         with open(valid_labels_file_path) as f:
             self.valid_labels = f.read().splitlines()
 
-    def get_blamed_commits(self, db_repo_id, slug, repos_folder='./repos'):
-        
+    def get_blamed_commits(self, slug, db_repo_id, repos_folder='./repos'):
         session = SessionWrapper.new()
         basic_classifier = BasicFileTypeClassifier()
+
         folder_path = os.path.join(repos_folder, slugToFolderName(slug))
-        
         try:
             git_repo = pygit2.Repository(folder_path)
             last = git_repo[git_repo.head.target]
@@ -54,7 +53,6 @@ class Blamer(BaseGitHubThreadedExtractor):
         repo, pid, gh = self.get_gh_repo(slug)
 
         blamed_commits = {}
-
         # Fetch all commits as an iterator, and iterate it
         for c in git_repo.walk(last.id, pygit2.GIT_SORT_TIME):
             commit = CommitWrapper(c)
@@ -113,9 +111,11 @@ class Blamer(BaseGitHubThreadedExtractor):
 
                 line_labels = {}
                 blame_counter = {}
+                
                 for hunk in patch.hunks:
                     if hunk.old_lines:
                         for hl in hunk.lines:
+                            
                             """
                             only changes to deleted lines can be tracked back to when they were first introduced
                             there is no parent commit that introduced a new line that it's being added in the current
@@ -157,12 +157,14 @@ class Blamer(BaseGitHubThreadedExtractor):
 
                                         # TODO fine-tune: Ignore commits that changed more than 100 files
                                         if num_files is None or num_files >= 50:
+                                            
                                             continue
 
                                         # TODO fine-tune: filter number of new lines (ins)
                                         if ins and ins >= 200:
+                                            
                                             continue
-
+                                        
                                         try:
                                             blamed_db_commit = session.query(Commit).filter_by(
                                                 sha=blamed_sha).one()
@@ -239,9 +241,10 @@ class Blamer(BaseGitHubThreadedExtractor):
                                         logger.error(
                                             msg="{0}: revparse error {1}:\t{2}".format(slug, blamed_sha, e))
                                         traceback.print_exc()
-
+                                
                                 for line_num in range(bh.final_start_line_number,
                                                       bh.final_start_line_number + bh.lines_in_hunk):
+                                    
                                     if line_labels[line_num] == basic_classifier.CG_CODE:
                                         blame_counter.setdefault(blamed_sha, 0)
                                         blame_counter[blamed_sha] += 1
@@ -252,7 +255,7 @@ class Blamer(BaseGitHubThreadedExtractor):
                         except Exception as e:
                             logger.error(msg="{0} Unknown blame error on commit {1}: {2}".format(slug, sha, e))
                             traceback.print_exc()
-
+                
                 for blamed_sha, num_lines in blame_counter.items():
                     b = Blame(db_repo_id,
                               sha,
@@ -294,7 +297,7 @@ def main():
 
     for r in repos:
         b = Blamer(tokens, tokens_queue, tokens_map)
-        b.get_blamed_commits(r.repo_id, r.slug)
+        b.get_blamed_commits(r.slug, r.repo_id)
 
 
 if __name__ == '__main__':

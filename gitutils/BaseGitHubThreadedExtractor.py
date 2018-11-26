@@ -6,8 +6,11 @@ from time import sleep
 import wrapt
 from github import Github
 
-import loggingcfg
+import sys
 
+sys.path.append("/data2/adithya/szz")
+
+import loggingcfg
 logger = loggingcfg.initialize_logger('SZZ')
 
 
@@ -79,10 +82,11 @@ class BaseGitHubThreadedExtractor(object):
     @synchronized
     def wait_if_depleted(self, pid, g):
         (remaining, _limit) = BaseGitHubThreadedExtractor.get_rate_limit(g)
+        #print(remaining, _limit)
         sleep_duration = BaseGitHubThreadedExtractor.compute_sleep_duration(g)
         if not remaining > 5:
                 logger.info(
-                    "[tid: {0}] Process depleted, going to sleep for {1} min.".format(pid, int(sleep_duration / 60)))
+                   "[tid: {0}] Process depleted, going to sleep for {1} min.".format(pid, int(sleep_duration / 60)))
                 sleep(sleep_duration)
 
 

@@ -189,11 +189,13 @@ class Project(Base):
     num_commits = Column (Integer)
     num_desdocs = Column(Integer)
     num_issues = Column(Integer)
+    num_raw_issues = Column(Integer)
     num_PRs = Column(Integer)
     num_forks = Column(Integer)
+    num_issuelinks = Column(Integer)
 
     def __init__(self, name, age, repo_id_lind, repo_id_GHT, is_valid, language, num_bugs, is_treatment, user_type, commercial_involvement, url, num_contributors, num_commits, 
-        num_desdocs, num_issues, num_PRs, num_forks):
+        num_desdocs, num_issues, num_raw_issues, num_PRs, num_forks, num_issuelinks):
         self.name = name
         self.age = age
         self.repo_id_lind = repo_id_lind
@@ -205,10 +207,12 @@ class Project(Base):
         self.commercial_involvement = commercial_involvement
         self.is_treatment = is_treatment
         self.num_bugs = num_bugs
+        self.num_issuelinks = num_issuelinks
         self.num_contributors = num_contributors
         self.num_commits = num_commits
         self.num_desdocs = num_desdocs
         self.num_issues = num_issues
+        self.num_raw_issues = num_raw_issues
         self.num_PRs = num_PRs
         self.num_forks = num_forks
 
@@ -299,6 +303,8 @@ class Bug_Commit_Timeline(Base):
     Q4_2017 = Column(Integer)
     Q1_2018 = Column(Integer)
     Q2_2018 = Column(Integer)
+    Q3_2018 = Column(Integer)
+    Q4_2018 = Column(Integer)
 
 
     def __init__(self,
@@ -330,7 +336,9 @@ class Bug_Commit_Timeline(Base):
                 Q3_2017,
                 Q4_2017,
                 Q1_2018,
-                Q2_2018) :
+                Q2_2018,
+                Q3_2018,
+                Q4_2018) :
         self.repo_id = repo_id
         self.slug = slug
         self.total = total
@@ -360,6 +368,210 @@ class Bug_Commit_Timeline(Base):
         self.Q4_2017 = Q4_2017
         self.Q1_2018 = Q1_2018
         self.Q2_2018 = Q2_2018
+        self.Q3_2018 = Q3_2018
+        self.Q4_2018 = Q4_2018
+
+class Issue_Timeline(Base):
+    __tablename__ = 'issue_timeline'
+    
+    id = Column(BigInteger, primary_key=True)
+    repo_id = Column(BigInteger, index=True, nullable=False)  # ForeignKey("repos.id")
+    slug = Column(String(255), index=True)
+    total = Column(Integer)
+    Q1_2012 = Column(Integer)
+    Q2_2012 = Column(Integer) 
+    Q3_2012 = Column(Integer)
+    Q4_2012 = Column(Integer)
+    Q1_2013 = Column(Integer)
+    Q2_2013 = Column(Integer)
+    Q3_2013 = Column(Integer)
+    Q4_2013 = Column(Integer)
+    Q1_2014 = Column(Integer)
+    Q2_2014 = Column(Integer)
+    Q3_2014 = Column(Integer)
+    Q4_2014 = Column(Integer)
+    Q1_2015 = Column(Integer)
+    Q2_2015 = Column(Integer)
+    Q3_2015 = Column(Integer)
+    Q4_2015 = Column(Integer)
+    Q1_2016 = Column(Integer)
+    Q2_2016 = Column(Integer)
+    Q3_2016 = Column(Integer)
+    Q4_2016 = Column(Integer)
+    Q1_2017 = Column(Integer)
+    Q2_2017 = Column(Integer)
+    Q3_2017 = Column(Integer)
+    Q4_2017 = Column(Integer)
+    Q1_2018 = Column(Integer)
+    Q2_2018 = Column(Integer)
+    Q3_2018 = Column(Integer)
+    Q4_2018 = Column(Integer)
+
+
+    def __init__(self,
+                repo_id,
+                slug,
+                total,
+                Q1_2012,
+                Q2_2012,
+                Q3_2012,
+                Q4_2012,
+                Q1_2013,
+                Q2_2013,
+                Q3_2013,
+                Q4_2013,
+                Q1_2014,
+                Q2_2014,
+                Q3_2014,
+                Q4_2014,
+                Q1_2015,
+                Q2_2015,
+                Q3_2015,
+                Q4_2015,
+                Q1_2016,
+                Q2_2016,
+                Q3_2016,
+                Q4_2016,
+                Q1_2017,
+                Q2_2017,
+                Q3_2017,
+                Q4_2017,
+                Q1_2018,
+                Q2_2018,
+                Q3_2018,
+                Q4_2018) :
+        self.repo_id = repo_id
+        self.slug = slug
+        self.total = total
+        self.Q1_2012 = Q1_2012
+        self.Q2_2012 = Q2_2012
+        self.Q3_2012 = Q3_2012
+        self.Q4_2012 = Q4_2012
+        self.Q1_2013 = Q1_2013
+        self.Q2_2013 = Q2_2013
+        self.Q3_2013 = Q3_2013
+        self.Q4_2013 = Q4_2013
+        self.Q1_2014 = Q1_2014
+        self.Q2_2014 = Q2_2014
+        self.Q3_2014 = Q3_2014
+        self.Q4_2014 = Q4_2014
+        self.Q1_2015 = Q1_2015
+        self.Q2_2015 = Q2_2015
+        self.Q3_2015 = Q3_2015
+        self.Q4_2015 = Q4_2015
+        self.Q1_2016 = Q1_2016
+        self.Q2_2016 = Q2_2016
+        self.Q3_2016 = Q3_2016
+        self.Q4_2016 = Q4_2016
+        self.Q1_2017 = Q1_2017
+        self.Q2_2017 = Q2_2017
+        self.Q3_2017 = Q3_2017
+        self.Q4_2017 = Q4_2017
+        self.Q1_2018 = Q1_2018
+        self.Q2_2018 = Q2_2018
+        self.Q3_2018 = Q3_2018
+        self.Q4_2018 = Q4_2018
+
+class Bug_Issue_Timeline(Base):
+    __tablename__ = 'bug_issue_timeline'
+    
+    id = Column(BigInteger, primary_key=True)
+    repo_id = Column(BigInteger, index=True, nullable=False)  # ForeignKey("repos.id")
+    slug = Column(String(255), index=True)
+    total = Column(Integer)
+    Q1_2012 = Column(Integer)
+    Q2_2012 = Column(Integer) 
+    Q3_2012 = Column(Integer)
+    Q4_2012 = Column(Integer)
+    Q1_2013 = Column(Integer)
+    Q2_2013 = Column(Integer)
+    Q3_2013 = Column(Integer)
+    Q4_2013 = Column(Integer)
+    Q1_2014 = Column(Integer)
+    Q2_2014 = Column(Integer)
+    Q3_2014 = Column(Integer)
+    Q4_2014 = Column(Integer)
+    Q1_2015 = Column(Integer)
+    Q2_2015 = Column(Integer)
+    Q3_2015 = Column(Integer)
+    Q4_2015 = Column(Integer)
+    Q1_2016 = Column(Integer)
+    Q2_2016 = Column(Integer)
+    Q3_2016 = Column(Integer)
+    Q4_2016 = Column(Integer)
+    Q1_2017 = Column(Integer)
+    Q2_2017 = Column(Integer)
+    Q3_2017 = Column(Integer)
+    Q4_2017 = Column(Integer)
+    Q1_2018 = Column(Integer)
+    Q2_2018 = Column(Integer)
+    Q3_2018 = Column(Integer)
+    Q4_2018 = Column(Integer)
+
+
+    def __init__(self,
+                repo_id,
+                slug,
+                total,
+                Q1_2012,
+                Q2_2012,
+                Q3_2012,
+                Q4_2012,
+                Q1_2013,
+                Q2_2013,
+                Q3_2013,
+                Q4_2013,
+                Q1_2014,
+                Q2_2014,
+                Q3_2014,
+                Q4_2014,
+                Q1_2015,
+                Q2_2015,
+                Q3_2015,
+                Q4_2015,
+                Q1_2016,
+                Q2_2016,
+                Q3_2016,
+                Q4_2016,
+                Q1_2017,
+                Q2_2017,
+                Q3_2017,
+                Q4_2017,
+                Q1_2018,
+                Q2_2018,
+                Q3_2018,
+                Q4_2018) :
+        self.repo_id = repo_id
+        self.slug = slug
+        self.total = total
+        self.Q1_2012 = Q1_2012
+        self.Q2_2012 = Q2_2012
+        self.Q3_2012 = Q3_2012
+        self.Q4_2012 = Q4_2012
+        self.Q1_2013 = Q1_2013
+        self.Q2_2013 = Q2_2013
+        self.Q3_2013 = Q3_2013
+        self.Q4_2013 = Q4_2013
+        self.Q1_2014 = Q1_2014
+        self.Q2_2014 = Q2_2014
+        self.Q3_2014 = Q3_2014
+        self.Q4_2014 = Q4_2014
+        self.Q1_2015 = Q1_2015
+        self.Q2_2015 = Q2_2015
+        self.Q3_2015 = Q3_2015
+        self.Q4_2015 = Q4_2015
+        self.Q1_2016 = Q1_2016
+        self.Q2_2016 = Q2_2016
+        self.Q3_2016 = Q3_2016
+        self.Q4_2016 = Q4_2016
+        self.Q1_2017 = Q1_2017
+        self.Q2_2017 = Q2_2017
+        self.Q3_2017 = Q3_2017
+        self.Q4_2017 = Q4_2017
+        self.Q1_2018 = Q1_2018
+        self.Q2_2018 = Q2_2018
+        self.Q3_2018 = Q3_2018
+        self.Q4_2018 = Q4_2018
 
 class Design_Doc_Timeline(Base):
     __tablename__ = 'design_doc_timeline'
@@ -394,7 +606,8 @@ class Design_Doc_Timeline(Base):
     Q4_2017 = Column(Integer)
     Q1_2018 = Column(Integer)
     Q2_2018 = Column(Integer)
-
+    Q3_2018 = Column(Integer)
+    Q4_2018 = Column(Integer)
 
     def __init__(self,
                 repo_id,
@@ -425,7 +638,9 @@ class Design_Doc_Timeline(Base):
                 Q3_2017,
                 Q4_2017,
                 Q1_2018,
-                Q2_2018) :
+                Q2_2018,
+                Q3_2018,
+                Q4_2018) :
         self.repo_id = repo_id
         self.slug = slug
         self.total = total
@@ -455,4 +670,5 @@ class Design_Doc_Timeline(Base):
         self.Q4_2017 = Q4_2017
         self.Q1_2018 = Q1_2018
         self.Q2_2018 = Q2_2018
-
+        self.Q3_2018 = Q3_2018
+        self.Q4_2018 = Q4_2018  

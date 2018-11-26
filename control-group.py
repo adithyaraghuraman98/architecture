@@ -14,7 +14,7 @@ from sqlalchemy.orm import sessionmaker
 import subprocess
 from unidecode import unidecode
 
-from orm.initdb import SessionWrapper
+from orm.initdb import SessionWrapper, SessionWrapper_GHT
 from orm import GhIssue, BGhIssue
 from orm.tables import Commit, Blame, Repo, Bug_Commit_Timeline, Design_Doc_Timeline, Project, User, Control_Repo
 from orm.lindholmen import Repo_Lindholmen, UMLFile_Lindholmen, Commit_Lindholmen
@@ -57,36 +57,42 @@ def analyze_repo(repo):
     lind_url = "https://www.github.com/"+ slug
     if(session.query(Repo_Lindholmen).filter_by(url = lind_url).count()!=0):
         return False
+    if(session.query(Repo).filter_by(slug = slug).count()!=0):
+        return False
     if(repo.forked_from != None):
         return False
     
     num_issues = session_GHT.query(Issue_GHT).filter_by(repo_id = repo.id,pull_request = 0).count()
     if(num_issues<30):
         return False
-    
-    if(session.query(Control_Repo).filter_by(url = repo.url).count()!=0):
+    if(not (repo.language== "Java")):
         return False
+
+
+    # if(session.query(Control_Repo).filter_by(url = repo.url).count()!=0):
+    #     return False
     # control_repo = Control_Repo(url = repo.url, name = repo.name,
     #    language = repo.language, created_at = repo.created_at, repo_id_GHT = repo.id,
     #     num_issues=  num_issues)
     # session.add(control_repo)
     # session.commit()
-    print(num_issues)
     return True
 
 
 
 
 sample = random.sample(range(1,89176716), 1000000)
+i = 0
 with open('control-group.txt','w') as f:
-	for index in sample:
-	    try:
-	        repo = session_GHT.query(Repo_GHT).filter_by(id = index).one()
-	    except: 
-	        continue
-	    if(analyze_repo(repo)):
-	    	print(repo.url)
-	    	f.write(repo.url.split("//api.github.com/repos/")[-1]+'\n')
+    for index in sample:
+        try:
+            repo = session_GHT.query(Repo_GHT).filter_by(id = index).one()
+        except: 
+            continue
+        if(analyze_repo(repo)):
+            print(repo.url,i)
+            i+=1
+            f.write(repo.url.split("//api.github.com/repos/")[-1]+'\n')
 
 	    
 

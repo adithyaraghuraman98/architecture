@@ -52,7 +52,8 @@ for repo in session.query(Repo).filter(Repo.total_commits >= 0):
         Q3_2016 = docs_dict[2016][2], Q4_2016 = docs_dict[2016][3],
         Q1_2017 = docs_dict[2017][0], Q2_2017 = docs_dict[2017][1], 
         Q3_2017 = docs_dict[2017][2], Q4_2017 = docs_dict[2017][3],
-        Q1_2018 = docs_dict[2018][0], Q2_2018 = docs_dict[2018][1])  
+        Q1_2018 = docs_dict[2018][0], Q2_2018 = docs_dict[2018][1],
+        Q3_2018 = docs_dict[2018][2], Q4_2018 = docs_dict[2018][3])  
 
 
     session.add(db_desdoc)

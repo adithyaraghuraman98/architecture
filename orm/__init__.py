@@ -2,7 +2,7 @@ __all__ = ['base', 'tables', 'ghissue', 'initdb', 'issue_comments', 'commit_file
 from orm.base import Base
 from orm.commit_files import CommitFiles
 from orm.cross_reference import CrossReference
-from orm.ghissue import GhIssue, BGhIssue
+from orm.ghissue import GhIssue, BGhIssue, GHIssueClassification
 from orm.initdb import SessionWrapper, SessionWrapper_GHT
 from orm.issue_comments import IssueComment
 from orm.tables import User, Repo, Commit, IssueLink, Blame, Project,  Control_Repo

@@ -1,0 +1,40 @@
+bug,exception,severity-high
+bug,issue fixed
+urgent: enhancement / correction
+Bug,Contributor priority 2: Medium
+LHCb,bug
+bug/typo
+bug,wontfix
+Bug,Contributor priority 1: High
+bug,duplicate
+kind: bug
+bug,question
+UI,bug
+CGAL 3D demo,bug
+cause unknown
+type/bug
+bug,status/STALE
+bug - confirmed
+bug,done
+bug,help wanted
+A-gui,B-bug
+bug,interface/infrastructure
+ESC/Java2,defect
+enhancement,wontfix
+Priority-Medium,Type-Defect
+1. Bug
+Status: QA,Type: Bug
+Status: QA,Status: UX & UI,Type: Bug
+game bug
+P1 - RFE,Will Not Fix
+Core,bug
+Priority-Medium,bug,imported
+1.3 patch (defect),3.3 low priority (EC3)
+Type: Bug
+bug,imported
+bug,enhancement
+B-bug
+type:bug
+bug,fixed
+invalid
+bug

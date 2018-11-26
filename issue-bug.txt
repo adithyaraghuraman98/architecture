@@ -1,0 +1,100 @@
+Resolve failing validation
+Cloud are failing due to a bean name conflict
+Deploy via Rest-API always fails with "Multipart request is required"
+Fix for test failure in activiti-camel
+Fix for the failing test cases in dmn engine
+mule fails to build
+Validation failed: Task owner need to be set
+PV preference page fails
+Fix regression: build will fail if empty repository is added.
+NullPointerException on failed log in
+Activiti-spring-boot-starter-basic fails to coincide with Spring boot 2.0
+ELContext resolver fails on process variable created inside a Service Task
+wstool init fails
+mbx script fails on start up
+global IP acceptance test case fails
+App fails to load if the sort type is number of views
+Build fails if Serial is disable
+New test of manual examples fails too fast
+HEAD comments seem to be giving errors
+Logic error in DeploymentServiceImpl (6.0.0.Beta2-SNAPSHOT)
+We suspect that it was an error when the process parsed the XML file
+Error while importing State of the Union dataset
+Build broken by errors in scriptbindingmainlua51.cpp even though it should be automatically generated
+Setup.py should not be silent on fatal errors by default
+Error: Auto setup failed!
+Linker error after fresh clone
+Syntax error in tst_global_fillval.c causes segfault on CDF5 non-netcdf4 builds
+Memory error in new test nc_test4/tst_filterparser
+fixed memory error in tst_fills2.c
+fixed memory error in handling of (ignored) reference atts in HDF5 file
+Error involving single-threaded version makefile and stdint on Mac OSX
+Fixed a problem with the PySimpleClient logger name
+Fixed bug due to wrong splitting/unpacking in acsConfigReport (issue #12)
+Fix randomly failing test case
+Fix for failure of process instance creation by message start event
+Fix for delete app issue.
+Fix for test failure in activiti-camel
+Fix Travis CI test failure
+Fix bugs in company registration views
+Fixed failing test and warnings for TNFAs
+Fix compilation error with VC2017 and -permissive-
+Bug fix in GMap test.
+CMap bugfixes
+Fix a compilation error in Travis
+Fixed a compilation issue in PMP's border_halfedges()
+Fixed an implementation of PMP's border_halfedges()
+Fix implementation of AABB_traits::Closest_point
+Fix bug in polyline simplification
+Fix the Travis CI builds
+Fix for Refine_edges
+Fix a bug in Boost.Config<1.57 with gcc>=5.0
+Bugfix: correct point set selection handling for point_inside_polyhedron
+Bugfix: always check if facet is sliver
+Bugfix: Only check orientation of polyhedron if it is closed
+Bugfix: OFF reader should accept comments and empty lines
+Fix bug  in Halfedge_around_source_circulator
+Fixed errors in main activity
+Fix GitHub issue #715 (4.6)
+Fix GitHub issue #715 (5.0.0)
+Bug fixes
+Fixed bugs resulting from merge conflict
+GRIB: Handle missing values for more time interval fields (Fixes #375)
+Fixed some minor errors
+fixed bugs and logging for single player, logging for multiplayer done
+Fix variable declarations and method parameters
+Fixed a problem with the PySimpleClient logger name
+this reference unnecessary and seems to cause problems if using yml
+Problems with error propagation (Version 6.0.0.RC1)
+Problems with Confusion matrix
+fix truncation problem in root state
+Concurrency problems under heavy load
+Mutex lock ordering problem between PDP and EDP classes
+problem with install in python 3.4.3 ubuntu/elementary freya 64 bit
+Problem running postprocessor for Grid job, stuck in 'Completing'
+Bugfix/fix publisher problems
+Fix problems with DiracFile
+Fix a potential problem with StatisticImageProperties Class definition.
+Fixed problems with authorization for new users
+Problems with labels loaded from csb file
+Test cases:improve small problems.
+Problem with Label::createWithSystemFont() on android
+Problem with ClassesSolvableGroup when called for a trivial group
+Problem with computation of maximal subgroups in an almost simple group, possible bug in MaxesAlmostSimple?
+fixed problem with test_evol
+Fix bugs in deployment script
+Fix check valid tag
+Partial fix for issue #86 - specify tag number for deployment
+Fix minor issues with deploy.sh
+Fix unit tests
+Remove code preventing upload for files with extensions not in the white-list
+Fix logger findbugs issues
+Findbugs fixes
+Fixing some bugs
+Isses in full text detection
+Errors on profile reloading
+Going back to the previous page does not work due to window.location.replace
+AJAX forms with CSRF do not report invalid CSRF correctly
+Names created twice raise errors
+Crash when opening .dblog file (not always reproduceable)
+crash when monitoring certain logfiles

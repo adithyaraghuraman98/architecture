@@ -8,7 +8,7 @@ import datetime
 
 from dateutil import parser
 from sqlalchemy import Column
-from sqlalchemy import Integer, String, BigInteger, DateTime, Index
+from sqlalchemy import Integer, String, Boolean, BigInteger, DateTime, Index
 from unidecode import unidecode
 
 from .base import Base
@@ -74,6 +74,26 @@ class BGhIssue(Base):
     def __repr__(self):
         return 'Issue: %s' % self.title
 
+class GHIssueClassification(Base):
+    __tablename__ = 'issues2classes'
+    id = Column(Integer, primary_key=True)
+    slug = Column(String(255), index=True)
+    issue_id = Column(BigInteger, index=True)
+    issue_number = Column(Integer)
+    title = Column(String(1024))
+    is_bug = Column(Boolean)
+
+    def __init__(self, 
+                 slug,
+                 issue_id, 
+                 issue_number,
+                 title,
+                 is_bug):
+        self.slug = slug
+        self.issue_id = issue_id
+        self.issue_number = issue_number
+        self.title = title
+        self.is_bug = is_bug
 
 class GhIssue(Base):
     __tablename__ = 'issues2'

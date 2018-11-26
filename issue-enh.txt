@@ -1,0 +1,100 @@
+Add a sagapython-version script
+New version of ES581 driver
+Version: Update version from 4.8.6 to 4.9
+Add analytics to project on production.
+Add support for querying only scoped executions.
+Add support for retrieving a VariableInstance and DataObject from the TaskService.
+Add additional localization support for the following types:
+Added a method (processInstanceIdIn) in TaskInfoQuery
+Added support for compensation event definitions by using 'org/activiti/...
+Add new async job executor to Activiti
+Added extra constructors to selectively prevent ExpressionManager from instantiating ExpressionFactoryImpl
+Add query method for task by candidate user or candidate group or assigneed
+Add questions to Job
+Add more digits in a field in the UI
+Add parameters to surface reconstruction plugin
+Add a CGALExports.cmake file
+Adding android SDK 9 to the project
+Add searching for skills
+Add searching for users
+Add version id to resources
+Add google analytics
+Add support for wrapperAttrs, labelWrapperAttrs, and groupWrapperAttr...
+add simple bluetooth support
+add video support
+Update CallActivityBehavior to send PROCESS_STARTED event.
+update Groovy version to 2.4.5, as versions below 2.4.3 have a securi...
+Update REST API http methods for creating user and groups
+Updated other means of importing (Json format).
+Update JS libraries to latest versions
+Update the Nexmo integration to pass the right domain when buying a number.
+Update rcmlserver-api/base-url in restcomm.xml through configuration
+Update Makefile to get compiling and running with new HDF5 install
+Update UnidataDD2MI.xsl to the threddsncISO 2.2.5 version
+updates syntax in preparation for 1.5 release
+readme cmake updates
+Updated source code
+Add Rest API to delete a process instance
+Delete IntegrationContexts once they are consumed
+sync delete method for all list activities.
+Improve wait mechanism for MQServiceTaskIT
+Improvement of sending event to Audit Service
+Improve removal of self-intersections for the demo plugin
+Speed improvement from Dev server
+minor improvements from Dev server
+Improved flash saving handling
+Improve on parsing capabilities
+Improve deployment code and docs
+UI Improvements for header region and copy to clipboard button
+Improve Condor submission
+Improve DIRAC job finalisation
+[Algorithms] Improvements
+[jQuery] Events improvements
+Dashboard performance improvements
+improvement of JSON serialization for agent and server websocket communication
+Dashboard API improvements(#1392)
+Improvements on current SPAs
+Improve XMLParser - find single value
+Improve GUI to allow XML to XML conversion
+Improve thread safety of models
+Improve error messages in db-migrator
+Improved support for PostgreSQL
+Improve GA performance measurements
+Improve exception safety with smart pointers
+Better async management, couchbase writer improvements
+Provide a better dependency check in GraphicsView
+Better editor/visualization space usage
+Better build system (for python installation)
+Better array support
+Add better parsing of the token in SemanticInfo
+better class structure on interface buttons
+Bugfix: Better search for itk hdf5 headers
+Better MongoDB connection string for Mongos, Single and ReplicaSet
+Better singleton export
+Better Logging for Malformed Requests
+Better handling of dataset page with many files
+Added better error mapping for NEGO results.
+Better team member sort
+Better support multiple OCI runtimes
+Detect cyclic dependency using reflection abstract factory
+Upgrade to Bootstrap 3
+Add Savings Approval to List of Pending Tasks
+Remove identical drawn text
+Pipeline error and global errors
+add support for vibrate jquery plugin
+add the possibility to display imports in the class representation
+Move bounding box drawing from the server to the client.
+Add searchbox extension for Ace editor
+Modularization of inference
+Enhance Datasets display
+Support array custom type adapters
+Custom Scalar Types support
+Support for `getFieldName` type methods?
+Add channel endpoint config and parser
+Add configurable XML serializer
+Introduce global dictionary message direction
+Improve API for clearing normalized cache
+Support Hamcrest matchers in header validation
+Add ignore validation matcher
+Add tests for web GUI
+upgrade to Java 7
