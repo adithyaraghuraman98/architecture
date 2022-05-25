@@ -11,7 +11,7 @@ numpy==1.13.3
 pycparser==2.18
 pygit2==0.26.0
 PyGithub==1.35
-PyJWT==1.5.3
+PyJWT==2.4.0
 python-dateutil==2.6.1
 pytz==2017.2
 PyYAML==3.12
